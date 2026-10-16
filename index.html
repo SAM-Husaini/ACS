@@ -250,7 +250,7 @@ html.big-text #shell{zoom:1.12}
 .page.type{background:var(--cream);color:var(--ink)}
 .page.type .text{flex:1;justify-content:center}
 .page.type .k{color:var(--gold-deep)}
-.page.type h2{color:var(--ink-navy);font-size:clamp(32px,9vw,40px)}
+.page.type h2{color:var(--ink-navy);font-size:clamp(32px,9vw,40px)}.page.type h2 em,.page.quiet h2 em{color:var(--gold-deep)}.page.quiet .k{color:var(--gold-deep)}
 .page.type p{color:var(--ink-2);max-width:34ch}
 .page.type .credit{color:var(--ink-2);border-color:var(--line)}
 .page.type .fact{color:var(--navy)} .page.type .fact small{color:var(--ink-2)}
@@ -682,7 +682,7 @@ label.lab{display:block;font-size:11.5px;font-weight:700;letter-spacing:.14em;te
 .d-council .mem{margin:12px auto 0;max-width:34ch;font-size:12.5px;line-height:1.5;color:rgba(255,255,255,.7)}
 .d-council .mem b{color:#fff;font-weight:600}
 .d-sign{margin-top:var(--s3);font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);font-weight:700;position:relative;z-index:1;animation:rise .9s 1.1s var(--ease) both}
-.stars{position:absolute;inset:0;overflow:hidden;pointer-events:none}
+.stars{position:absolute;inset:0;overflow:hidden;pointer-events:none;z-index:0}
 .stars i{position:absolute;bottom:-20px;width:8px;height:8px;background:var(--gold);clip-path:polygon(50% 0,61% 35%,98% 35%,68% 57%,79% 91%,50% 70%,21% 91%,32% 57%,2% 35%,39% 35%);opacity:0;animation:float 8s linear infinite}
 @keyframes float{0%{transform:translateY(0) rotate(0);opacity:0}10%{opacity:.7}100%{transform:translateY(-110vh) rotate(200deg);opacity:0}}
 .toast{position:absolute;left:50%;bottom:var(--bot);transform:translate(-50%,20px);background:var(--ink-navy);color:#fff;padding:12px 16px;border-radius:12px;font-size:14px;opacity:0;transition:all .3s var(--ease);pointer-events:none;z-index:5;white-space:nowrap}
@@ -824,6 +824,45 @@ label.lab{display:block;font-size:11.5px;font-weight:700;letter-spacing:.14em;te
 @keyframes morebob{0%,100%{transform:translateY(0)}50%{transform:translateY(4px)}}
 @media (prefers-reduced-motion:reduce){.more-hint svg{animation:none}}
 
+
+/* why-we-are-asking line, first question of each section */
+.q .why{font-family:var(--display);font-style:italic;font-weight:400;font-size:15.5px;line-height:1.4;color:var(--gold-deep);margin:-2px 0 2px;max-width:32ch;text-wrap:pretty}
+/* thank-you: your answers beside everyone's */
+.glance{position:relative;z-index:1;width:100%;margin-top:18px;text-align:left;background:rgba(255,255,255,.05);border:1px solid rgba(201,175,123,.35);border-radius:16px;padding:14px 16px 12px;animation:rise .9s 1.6s var(--ease) both}
+.glance .g-title{font-size:11px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);margin-bottom:10px}
+.glance .g-row{display:grid;gap:2px;padding:8px 0;border-top:1px solid rgba(255,255,255,.1)}
+.glance .g-you{font-family:var(--display);font-size:16px;color:#fff;line-height:1.3}
+.glance .g-all{font-size:13px;color:rgba(255,255,255,.72);line-height:1.35}
+.glance .g-pri{padding-top:10px;border-top:1px solid rgba(255,255,255,.1)}
+.glance .g-k{font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.6);margin-bottom:6px}
+.glance .g-p{display:grid;grid-template-columns:10px 1fr;gap:3px 10px;align-items:baseline;font-size:14.5px;color:#fff;padding:5px 0;line-height:1.3}
+.glance .g-p i{width:8px;height:8px;border-radius:8px;background:rgba(255,255,255,.3);display:inline-block;transform:translateY(-1px)}
+.glance .g-p.hit i{background:var(--gold);box-shadow:0 0 0 3px rgba(201,175,123,.25)}
+.glance .g-p small{grid-column:2;font-size:12.5px;color:rgba(255,255,255,.62)}
+.glance .g-note{font-family:var(--display);font-style:italic;font-size:14.5px;color:var(--gold);margin-top:8px;line-height:1.35}
+.glance .g-sub{font-size:12.5px;color:rgba(255,255,255,.6);margin-top:10px;line-height:1.4}
+
+
+/* ---------- production polish: fold, gutters, tap targets, overlaps ---------- */
+#welcome .hero{height:25vh;min-height:190px;max-height:240px}
+@media (max-height:700px){#welcome .hero{height:23vh;min-height:170px}}
+.w-pulse{padding:10px 14px}.w-pulse .num b{font-size:34px}
+#welcome .stage .text,#welcome .w-text{gap:10px}
+#welcome h1,#welcome .w-h1{font-size:clamp(26px,7.4vw,32px)}
+#welcome p{font-size:14.5px;line-height:1.45}
+.linkbtn{min-height:40px;padding:8px 6px;display:inline-flex;align-items:center}
+.menubtn{width:40px;height:40px}
+.sndbtn,#listenBtn{min-height:40px}
+.ns-tabs button{min-height:40px}
+.cctabs{padding:10px var(--gr) 10px var(--gl);max-width:440px}
+.cctabs button{min-height:40px}
+.xt th{letter-spacing:0;font-size:8.5px;padding:0 1px 4px}
+@media (max-width:374px){.xt th{font-size:7.5px}.xt td{font-size:11px;padding:8px 0}.xt col.f{width:29%}}
+.toast{bottom:calc(var(--bot) + 76px)}
+html.show-swipe .page .more-hint{display:none!important}
+.page .stage>.more-hint i{transform:translateY(-52px)}
+.q .opts>.more-hint i{transform:translateY(-40px)}
+
 </style>
 
 <div id="shell">
@@ -904,6 +943,7 @@ label.lab{display:block;font-size:11.5px;font-weight:700;letter-spacing:.14em;te
   <p class="d-promise gut" id="donePromise"></p>
   <div class="receipt gut" id="receipt" aria-live="polite"></div>
   <div class="gut d-cta"><button class="btn btn-navy" id="seeResults">Watch the live results</button></div>
+  <div class="gut glance" id="glance" hidden></div>
   <div class="d-sign">Wassalam · Fee amanillah</div>
   <div class="d-council gut">
     <div class="t">ACS Governing Council 2023 to 2026</div>
@@ -942,7 +982,8 @@ label.lab{display:block;font-size:11.5px;font-weight:700;letter-spacing:.14em;te
 const ENDPOINT = "https://script.google.com/macros/s/AKfycbyO9px4ywc6lywiLL4hT8Xd_Kj9EJD0Dcr_ik04jB4jEhj6-FV1D-y4BdX2hRE3Eftz/exec"; // Apps Script web-app URL goes here at launch. Empty = prototype mode.
 const CONFIG = { memberTotal: 0, summaryDate: "" }; // memberTotal: all ACS member families (0 = unknown); summaryDate: when members receive the summary, e.g. "Friday 7 November"
 const PROTO = !ENDPOINT;
-let CID=''; try{ CID=localStorage.getItem('acs_cid')||''; if(!CID){ CID=((crypto&&crypto.randomUUID)?crypto.randomUUID():(Math.random().toString(36).slice(2)+Date.now().toString(36))).replace(/-/g,'').slice(0,24); localStorage.setItem('acs_cid',CID); } }catch(e){}
+let CID=''; function newDevice(){ try{ CID=((crypto&&crypto.randomUUID)?crypto.randomUUID():(Math.random().toString(36).slice(2)+Date.now().toString(36))).replace(/-/g,'').slice(0,24); localStorage.setItem('acs_cid',CID); CODE=''; localStorage.removeItem('acs_code'); }catch(e){} }
+try{ CID=localStorage.getItem('acs_cid')||''; if(!CID){ CID=((crypto&&crypto.randomUUID)?crypto.randomUUID():(Math.random().toString(36).slice(2)+Date.now().toString(36))).replace(/-/g,'').slice(0,24); localStorage.setItem('acs_cid',CID); } }catch(e){}
 let CODE=''; try{ const m=(location.search+location.hash).match(/[?&#]m=([A-Za-z0-9]{4,16})/); if(m){ CODE=m[1].toUpperCase(); localStorage.setItem('acs_code',CODE); } else CODE=localStorage.getItem('acs_code')||''; }catch(e){}
 let COUNCIL=''; try{ const m=(location.search+location.hash).match(/[?&#]council=([A-Za-z0-9_-]{3,40})/); if(m){ COUNCIL=m[1]; localStorage.setItem('acs_council',COUNCIL); history.replaceState(null,'',location.pathname); } else COUNCIL=localStorage.getItem('acs_council')||''; }catch(e){}
 const pinged={}; function ping(event,idx){ if(!ENDPOINT||ADMIN) return; const k=event+':'+(idx==null?'':idx); if(pinged[k]) return; pinged[k]=1;
@@ -956,6 +997,11 @@ function show(name, dir='fwd'){
   from.classList.remove('active'); from.classList.add(dir==='fwd'?'leaving-fwd':'leaving-back');
   setTimeout(()=>from.classList.remove('leaving-fwd','leaving-back'), 550);
   to.classList.add('active'); current = name;
+  if(name==='welcome'){ try{ if(window.__wavesOn) window.__wavesOn(); }catch(e){} }
+  if(name==='story'){ setTimeout(()=>{ try{ setPage(Math.max(0,Math.min(pages.length-1,Math.round(deck.scrollLeft/Math.max(1,deck.clientWidth))))); }catch(e){} },60); }
+  else { try{ deckCycle(null); }catch(e){} try{ if(window.__lossAudio&&!window.__lossAudio.paused){ window.__lossAudio.pause(); } }catch(e){} }
+  if(name!=='welcome'&&name!=='gate'){ try{ if(window.__welcomeAudio&&!window.__welcomeAudio.paused) window.__welcomeAudio.pause(); }catch(e){} }
+  try{ if(window.__moreScan) setTimeout(window.__moreScan,250); }catch(e){}
 }
 function toast(msg){ const t=$('#toast'); t.textContent=msg; t.classList.add('show'); setTimeout(()=>t.classList.remove('show'),2200); }
 const ACADEMY_MISSION = "To inspire the children of Gurgaon to be God-conscious, seek knowledge about their religion, bond together as a community and forever learn to associate Islamic learning with felicity, success and happiness.";
@@ -971,10 +1017,10 @@ const pages=[
   <div class="ns-head"><img class="ns-cover" src="${A.vmv}" alt="Pathways to Piety: A Strategy Blueprint for ACS Gurgaon"><div class="ns-dial" aria-hidden="true"><svg viewBox="0 0 100 100"><circle cx="50" cy="50" r="46" fill="none" stroke="#C9AF7B" stroke-width="1" opacity=".55"/><circle cx="50" cy="50" r="36" fill="none" stroke="#C9AF7B" stroke-width=".6" opacity=".4"/>${[0,1,2,3,4].map(k=>{const a=(k*72-90)*Math.PI/180;const x=50+Math.cos(a)*41,y=50+Math.sin(a)*41;return `<circle class="ns-pt" data-i="${k}" cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="2.6" fill="#C9AF7B"/>`}).join('')}<g class="ns-needle"><path d="M50 12 L54 50 L50 56 L46 50 Z" fill="#124B7C"/><path d="M50 88 L54 50 L50 44 L46 50 Z" fill="#C9AF7B" opacity=".7"/><circle cx="50" cy="50" r="3.2" fill="#FBF8F2" stroke="#124B7C" stroke-width="1.2"/></g></svg></div></div>
   <div class="ns-tabs" role="tablist">${["Purpose","Vision","Mission","Values","Promise"].map((t,k)=>`<button role="tab" data-i="${k}" aria-selected="${k===0}"${k===0?' class="on"':''}>${t}</button>`).join('')}</div>
   <div class="ns-body">
-    <section class="ns-ch cur" data-i="0"><div class="ns-t"><small>01 · Why we exist</small><b>Our purpose</b></div><p>To inspire and facilitate a deep, intimate relationship with Allah (SWT): guiding our community on a journey of faith, a spiritual awakening that encourages living by the cherished values of Islam, bringing us closer to Allah (SWT) with each step.</p><div class="ns-ref">Inspired by Surah Al-Ankabut, 29:69</div></section>
-    <section class="ns-ch" data-i="1"><div class="ns-t"><small>02 · What we want to achieve</small><b>Our vision</b></div><p>A future where each member of ACS is rooted in the teachings of the Holy Quran and embodies the principles of Prophet Muhammad (SAW) and his Ahlul Bait: a spiritually enriched, vibrant and joyful community of mutual respect, brotherhood and harmony.</p><div class="ns-ref">Inspired by Surah Al-Hujurat, 49:13</div></section>
-    <section class="ns-ch" data-i="2"><div class="ns-t"><small>02 · How we get there</small><b>Our mission</b></div><p>To cultivate a fertile environment that fosters social, cultural and spiritual engagement, with collaborative and open exchanges of ideas that spur the community to grow together towards harmony, peace and prosperity.</p><div class="ns-ref">Inspired by Surah Al-Asr, 103:1 to 3</div></section>
-    <section class="ns-ch" data-i="3"><div class="ns-t"><small>03 · Our belief system</small><b>Our five Panjatani values</b></div><ol class="ns-vals"><li><b>Devotion and Faith (Taqwa)</b><span>A profound bond with Allah (SWT), the Prophet (SAW) and his Ahlul Bait, with steadfast devotion to our twelve Imams and to Imam Mahdi (AS).</span></li><li><b>Spiritual Mindfulness</b><span>Conscious awareness on the spiritual journey; a compassionate, spiritually mature community.</span></li><li><b>Peace and Harmony</b><span>Unity, tolerance and mutual respect amid diversity, within and beyond our community.</span></li><li><b>Growth and Prosperity</b><span>Spiritual, emotional and societal growth; shared progress for every member.</span></li><li><b>Collaboration</b><span>Collective effort and shared responsibility, pooling ideas and resources.</span></li></ol></section>
+    <section class="ns-ch cur" data-i="0"><div class="ns-t"><small>Why we exist</small><b>Our purpose</b></div><p>To inspire and facilitate a deep, intimate relationship with Allah (SWT): guiding our community on a journey of faith, a spiritual awakening that encourages living by the cherished values of Islam, bringing us closer to Allah (SWT) with each step.</p><div class="ns-ref">Inspired by Surah Al-Ankabut, 29:69</div></section>
+    <section class="ns-ch" data-i="1"><div class="ns-t"><small>What we want to achieve</small><b>Our vision</b></div><p>A future where each member of ACS is rooted in the teachings of the Holy Quran and embodies the principles of Prophet Muhammad (SAW) and his Ahlul Bait: a spiritually enriched, vibrant and joyful community of mutual respect, brotherhood and harmony.</p><div class="ns-ref">Inspired by Surah Al-Hujurat, 49:13</div></section>
+    <section class="ns-ch" data-i="2"><div class="ns-t"><small>How we will get there</small><b>Our mission</b></div><p>To cultivate a fertile environment that fosters social, cultural and spiritual engagement, with collaborative and open exchanges of ideas that spur the community to grow together towards harmony, peace and prosperity.</p><div class="ns-ref">Inspired by Surah Al-Asr, 103:1 to 3</div></section>
+    <section class="ns-ch" data-i="3"><div class="ns-t"><small>Our belief system</small><b>Our five Panjatani values</b></div><ol class="ns-vals"><li><b>Devotion and Faith (Taqwa)</b><span>A profound bond with Allah (SWT), the Prophet (SAW) and his Ahlul Bait, with steadfast devotion to our twelve Imams and to Imam Mahdi (AS).</span></li><li><b>Spiritual Mindfulness</b><span>Conscious awareness on the spiritual journey; a compassionate, spiritually mature community.</span></li><li><b>Peace and Harmony</b><span>Unity, tolerance and mutual respect amid diversity, within and beyond our community.</span></li><li><b>Growth and Prosperity</b><span>Spiritual, emotional and societal growth; shared progress for every member.</span></li><li><b>Collaboration</b><span>Collective effort and shared responsibility, pooling ideas and resources.</span></li></ol></section>
     <section class="ns-ch" data-i="4"><div class="ns-t"><small>Our promise</small><b>What we commit to</b></div><p>An inclusive, vibrant and spiritually rich community rooted in the teachings of Islam. A harmonious environment that encourages growth, collaboration and mutual respect. Continual opportunities for spiritual enlightenment, emotional support and societal contribution, on the path illuminated by the Prophet (SAW) and his Ahlul Bait. InshaAllah.</p><div class="ns-ref">Pathways to Piety, closing page</div></section>
   </div>
   <div class="ns-foot"><span class="ns-prog">${[0,1,2,3,4].map(k=>`<i data-i="${k}"${k===0?' class="on"':''}></i>`).join('')}</span><span class="ns-note">Abridged from the adopted blueprint</span></div>
@@ -1046,26 +1092,26 @@ const SECTS=["Overall","Programmes","Communication","Governance","Belonging","Th
 const S5=["Very satisfied","Satisfied","Neither","Dissatisfied","Very dissatisfied"];
 const Q5=["Excellent","Good","Fair","Poor","Very poor"];
 const Q=[
- {id:"q01",sect:"Overall",t:"Overall, how satisfied are you with ACS over the past three years?",type:"single",o:S5},
+ {id:"q01",why:"You have seen the three years. Start with the whole.",sect:"Overall",t:"Overall, how satisfied are you with ACS over the past three years?",type:"single",o:S5},
  {id:"q02",sect:"Overall",t:"Thinking of what your family receives from ACS over a year, how would you describe the value of membership?",type:"single",o:["Excellent value","Good value","Fair value","Poor value","Very poor value"]},
  {id:"q03",sect:"Overall",t:"How likely are you to encourage a family you know to take part in ACS activities?",type:"single",o:["Very likely","Likely","Not sure","Unlikely","Very unlikely"]},
- {id:"q04",sect:"Programmes",t:"Which of these have you or your family taken part in during the last three years?",hint:"Tick all that apply.",type:"multi",shuffle:true,none:"None of these",o:["Muharram majalis","Other majalis and jashn","ACS Academy (child enrolled, taught or volunteered)","Read ACS Times","Ramadan grocery drive (gave or volunteered)","Ladies' Wing activities","Annual General Meeting","Bereavement support (gave or received)"]},
+ {id:"q04",why:"The Academy, the majalis, ACS Times, the Ramadan drive: which of them reached your home?",sect:"Programmes",t:"Which of these have you or your family taken part in during the last three years?",hint:"Tick all that apply.",type:"multi",shuffle:true,none:"None of these",o:["Muharram majalis","Other majalis and jashn","ACS Academy (child enrolled, taught or volunteered)","Read ACS Times","Ramadan grocery drive (gave or volunteered)","Ladies' Wing activities","Annual General Meeting","Bereavement support (gave or received)"]},
  {id:"q05",sect:"Programmes",t:"How would you rate the quality of ACS majalis and events: speakers, venue and arrangements?",type:"single",o:Q5},
  {id:"q06",sect:"Programmes",t:"Who in your household is least served by ACS today?",type:"single",o:["Children under 12","Youth, 13 to 25","Women","Working adults","Elders","Everyone is well served"]},
  {id:"q06b",sect:"Programmes",t:"Is a child or grandchild of yours at ACS Academy?",type:"single",o:["Yes, enrolled now","Yes, in the past","Not yet, but we have children of Academy age","No children of Academy age"]},
  {id:"q07",sect:"Programmes",t:"How much has ACS Academy mattered to your family?",hint:"Asked because your family has been part of the Academy.",type:"single",o:["A great deal","Somewhat","A little","Not at all"],showIf:a=>!a.q06b||/^Yes/.test(a.q06b)},
- {id:"q08",sect:"Communication",t:"How many issues of ACS Times have you read?",type:"single",o:["Every issue","Most issues","One or two","None, but I know of it","I did not know it existed"]},
+ {id:"q08",why:"Eight editions of ACS Times later: did the news reach you?",sect:"Communication",t:"How many issues of ACS Times have you read?",type:"single",o:["Every issue","Most issues","One or two","None, but I know of it","I did not know it existed"]},
  {id:"q09",sect:"Communication",t:"How well informed do you feel about what ACS is doing and deciding?",type:"single",o:["Very well informed","Fairly well informed","Not very well informed","Not informed at all"]},
- {id:"q10",sect:"Governance",t:"When the Governing Council takes a decision, how clearly is it explained to members?",type:"single",o:["Very clearly","Fairly clearly","Not very clearly","Not at all","Cannot say"]},
+ {id:"q10",why:"Decisions, money, the right to be heard. The hard part of any term.",sect:"Governance",t:"When the Governing Council takes a decision, how clearly is it explained to members?",type:"single",o:["Very clearly","Fairly clearly","Not very clearly","Not at all","Cannot say"]},
  {id:"q11",sect:"Governance",t:"How clear are you about how ACS funds are raised and spent?",type:"single",o:["Very clear","Fairly clear","Not very clear","Not clear at all"]},
  {id:"q12",sect:"Governance",t:"If you had a concern or a suggestion, how easy would it be to raise it with the Council?",type:"single",o:["Very easy","Fairly easy","Not very easy","Very difficult","I have never tried"]},
- {id:"q13",sect:"Belonging",t:"At ACS gatherings, how welcome do you feel?",type:"single",o:["Always","Mostly","Sometimes","Rarely"]},
+ {id:"q13",why:"Beyond the programmes: how it felt to walk in.",sect:"Belonging",t:"At ACS gatherings, how welcome do you feel?",type:"single",o:["Always","Mostly","Sometimes","Rarely"]},
  {id:"q14",sect:"Belonging",t:"Compared with three years ago, how connected do you feel to the Shia community in Gurgaon?",type:"single",o:["More connected","About the same","Less connected","I was not here three years ago"]},
- {id:"q15",sect:"The next three years",t:"Which three of these matter most to you for the next term?",hint:"Pick exactly three.",type:"pick3",shuffle:true,o:["A permanent ACS Markaz / Imam Bargah","Growing ACS Academy","Engaging youth, 13 to 25","Ladies' Wing programmes","Bereavement and welfare support (Ta'awun)","Quality of majalis and speakers","Help for families in need (food, education, medical)","Digital ACS: website, YouTube, ACS Times","ACS's voice in wider Gurgaon and interfaith life"]},
+ {id:"q15",why:"This is the part the incoming Council will read most closely.",sect:"The next three years",t:"Which three of these matter most to you for the next term?",hint:"Pick exactly three.",type:"pick3",shuffle:true,o:["A permanent ACS Markaz / Imam Bargah","Growing ACS Academy","Engaging youth, 13 to 25","Ladies' Wing programmes","Bereavement and welfare support (Ta'awun)","Quality of majalis and speakers","Help for families in need (food, education, medical)","Digital ACS: website, YouTube, ACS Times","ACS's voice in wider Gurgaon and interfaith life"]},
  {id:"q16",sect:"The next three years",t:"If a suitable site for the ACS Markaz is found, how would you be willing to help?",hint:"Tick all that apply.",type:"multi",shuffle:true,none:"Not able to help at this time",o:["Contribute funds","Give an interest-free loan (Qarz-e-Hasana)","Offer professional expertise (legal, property, construction, finance)","Give time and effort","Prayers and moral support"]},
  {id:"q17",sect:"The next three years",t:"How would you like to contribute to ACS in the coming term?",hint:"Tick all that apply.",type:"multi",shuffle:true,none:"Not able to help this term",o:["Teach or help at ACS Academy","Write or edit for ACS Times","Help organise majalis and events","Ladies' Wing","Ta'awun and bereavement support","Fundraising","Digital, media and design"]},
  {id:"q18",sect:"The next three years",t:"How many new member families could you personally introduce to ACS in the coming year?",hint:"A commitment, not a guess. Leave your name on the last screen so the Council can take you up on it.",type:"single",o:["None that I can think of","One family","Two or three families","Four or five families","More than five families"]},
- {id:"q19",sect:"In your words",t:"One thing ACS must keep. One thing ACS must change.",hint:"Both optional. A line each is plenty.",type:"open",fields:[{k:"keep",l:"Keep"},{k:"change",l:"Change"}]},
+ {id:"q19",why:"The numbers go into a summary. These lines go to the Council, whole.",sect:"In your words",t:"One thing ACS must keep. One thing ACS must change.",hint:"Both optional. A line each is plenty.",type:"open",fields:[{k:"keep",l:"Keep"},{k:"change",l:"Change"}]},
  {id:"about",sect:"About you",t:"Last screen. All three are optional.",type:"about",o:["Under 25","25 to 39","40 to 59","60 and above"],g:["Woman","Man","Prefer not to say"]}
 ];
 function visibleQ(q){ return !q.showIf || !!q.showIf(state.answers||{}); }
@@ -1079,10 +1125,10 @@ try{ const s=JSON.parse(localStorage.getItem(KEY)||'null'); if(s&&!s.submitted) 
 function save(){ try{ localStorage.setItem(KEY,JSON.stringify(state)); }catch(e){} }
 function shuffled(q){ if(!q.shuffle) return q.o.slice(); if(!state.order[q.id]){ const a=q.o.map((_,i)=>i); for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];} state.order[q.id]=a; save(); } return state.order[q.id].map(i=>q.o[i]); }
 const TICK=`<span class="tick"><svg viewBox="0 0 24 24"><path d="M6 12.5l4 4 8-9"/></svg></span>`;
-const qwrap=$('#qwrap'); let qi=0; const qEls=[];
+const qwrap=$('#qwrap'); let qi=0, advancing=0; const qEls=[];
 Q.forEach((q,i)=>{
   const el=document.createElement('div'); el.className='q'; el.dataset.i=i; el.dataset.type=q.type;
-  let inner=`<div class="head"><div class="ic">${ICON[q.sect]||''}</div><div class="sect">${q.sect}${q.type==='about'?' · optional':''}</div></div><h2>${q.t}</h2>${q.hint?`<p class="hint">${q.hint}</p>`:''}`;
+  let inner=`<div class="head"><div class="ic">${ICON[q.sect]||''}</div><div class="sect">${q.sect}${q.type==='about'?' · optional':''}</div></div>${q.why?`<p class="why">${q.why}</p>`:''}<h2>${q.t}</h2>${q.hint?`<p class="hint">${q.hint}</p>`:''}`;
   if(q.type==='single'||q.type==='multi'||q.type==='pick3'){
     const opts=shuffled(q); const list=q.none?opts.concat([q.none]):opts;
     inner+=`<div class="opts${list.length<=6?' fill':''}" role="${q.type==='single'?'radiogroup':'group'}">`+list.map(o=>`<button class="opt${q.type==='single'?'':' multi'}" data-v="${o.replace(/"/g,'&quot;')}" role="${q.type==='single'?'radio':'checkbox'}" aria-checked="false"><span>${o}</span>${TICK}</button>`).join('')+`</div>`;
@@ -1131,7 +1177,7 @@ function updateFoot(){
 qwrap.addEventListener('click',e=>{
   const b=e.target.closest('.opt'); if(!b) return; const q=Q[qi], v=b.dataset.v;
   if(isLocked(q)){ toast('Your answers have been sent and are final.'); return; }
-  if(q.type==='single'){ state.answers[q.id]=v; renderSel(); save(); updateFoot(); setTimeout(()=>{ if(qi<Q.length-1&&answer(q)===v) go(qi+1); },450); }
+  if(q.type==='single'){ if(advancing) return; state.answers[q.id]=v; if(q.id==='q06b'&&!/^Yes/.test(v)) delete state.answers.q07; renderSel(); save(); updateFoot(); advancing=setTimeout(()=>{ advancing=0; if(qi<Q.length-1&&answer(q)===v) go(qi+1); },450); }
   else if(q.type==='about'){ const cur=state.answers.about||{}; if(b.dataset.g==='gender'){ cur.gender = cur.gender===v?undefined:v; } else { cur.age = cur.age===v?undefined:v; } state.answers.about=cur; renderSel(); save(); }
   else { let a=(state.answers[q.id]||[]).slice();
     if(q.none&&v===q.none){ a = a.includes(v)?[]:[v]; }
@@ -1144,20 +1190,20 @@ qwrap.addEventListener('input',()=>{ const q=Q[qi]; if(isLocked(q)) return; if(q
 function isLocked(q){ return !!state.submitted; }
 function go(i,dir){ const d=dir||(i>qi?'fwd':'back'); while(i>=0&&i<Q.length&&!visibleQ(Q[i])) i+= d==='back'?-1:1; if(i<0){ show('story','back'); return; } if(i>=Q.length){ submit(); return; } renderQ(i,d); }
 $('#qNext').addEventListener('click',()=>{ if(qi===Q.length-1) submit(); else go(qi+1,'fwd'); });
-$('#qBack').addEventListener('click',()=>go(qi-1,'back'));
+$('#qBack').addEventListener('click',()=>{ if(advancing){ clearTimeout(advancing); advancing=0; } go(qi-1,'back'); });
 (function(){ let sx=null, sy=null; const w=$('#qwrap');
   w.addEventListener('pointerdown',e=>{ if(e.pointerType==='mouse') return; sx=e.clientX; sy=e.clientY; },{passive:true});
   w.addEventListener('pointerup',e=>{ if(sx==null) return; const dx=e.clientX-sx, dy=e.clientY-sy; sx=null; if(Math.abs(dx)<70||Math.abs(dy)>Math.abs(dx)*0.6) return;
-    if(dx>0){ Snd.page(); go(qi-1,'back'); } else if(!$('#qNext').disabled){ Snd.page(); if(qi===Q.length-1) submit(); else go(qi+1,'fwd'); } },{passive:true});
+    if(dx>0){ if(advancing){ clearTimeout(advancing); advancing=0; } Snd.page(); go(qi-1,'back'); } else if(!$('#qNext').disabled){ Snd.page(); if(qi===Q.length-1) submit(); else go(qi+1,'fwd'); } },{passive:true});
 })();
 function startSurvey(){ show('survey'); renderQ(state.idx||0,'fwd'); ping('start'); }
 
-async function sendPayload(payload){ const r=await fetch(ENDPOINT,{method:'POST',body:JSON.stringify(payload)}); return await r.json(); }
+async function sendPayload(payload){ const ac=('AbortController' in window)?new AbortController():null; const t=ac?setTimeout(()=>ac.abort(),15000):0; try{ const r=await fetch(ENDPOINT,{method:'POST',body:JSON.stringify(payload),signal:ac?ac.signal:undefined}); return await r.json(); } finally{ if(t) clearTimeout(t); } }
 function setReceipt(kind){ const el=$('#receipt'); if(!el) return; el.className='receipt rc-'+kind;
   el.innerHTML = kind==='ok' ? '<i></i>Received in the Council\'s register' : kind==='pending' ? '<i></i>Not received yet. Your answers are saved on this phone and will be sent the next time it opens with a connection.' : kind==='dup' ? '<i></i>This link had already been used to answer. Your earlier answers stand.' : '<i></i>Prototype: nothing was sent anywhere.'; }
 async function retryPending(){ if(!ENDPOINT||!state.pending) return; try{ const res=await sendPayload(state.pending); if(res&&res.ok){ state.pending=null; state.receipt=true; save(); setReceipt('ok'); toast('Your answers have now been received.'); } else if(res&&res.dup==='code'){ state.pending=null; state.receipt=true; save(); setReceipt('dup'); } }catch(e){} }
 async function submit(){
-  const btn=$('#qNext'); btn.disabled=true; btn.textContent='Sending…';
+  const btn=$('#qNext'); btn.disabled=true; setNext('Sending…');
   const payload={submittedAt:new Date().toISOString(), durationSec:Math.round((Date.now()-(state.started||Date.now()))/1000), answers:state.answers, ua:navigator.userAgent.slice(0,80), test:ADMIN, cid:CID, code:CODE};
   let kind='proto';
   if(ENDPOINT){ try{ const res=await sendPayload(payload); if(res&&res.ok){ kind='ok'; } else if(res&&res.dup==='code'){ kind='dup'; } else { kind='pending'; } }catch(e){ kind='pending'; } }
@@ -1165,7 +1211,7 @@ async function submit(){
   state.submitted=true; state.submittedAt=payload.submittedAt; state.receipt=(kind==='ok'||kind==='dup'); state.pending=(kind==='pending')?payload:null; save(); Snd.done(); if(typeof syncLiveGate==='function') syncLiveGate();
   $('#donePromise').innerHTML = CONFIG.summaryDate ? `The summary reaches every member on <b>${CONFIG.summaryDate}</b>.` : 'The summary reaches every member within a week of the survey closing.';
   if(PROTO) $('#doneSub').textContent='Prototype: this answer was not sent anywhere. At launch, answers go to the Council’s private register and a summary comes back to members.';
-  setReceipt(kind); show('done'); spawnStars();
+  setReceipt(kind); show('done'); spawnStars(); renderGlance();
   if(kind==='pending'){ const t=setInterval(()=>{ if(!state.pending){ clearInterval(t); return; } retryPending(); },30000); }
 }
 function spawnStars(){ const s=$('#stars'); s.innerHTML=''; for(let i=0;i<10;i++){ const d=document.createElement('i'); d.style.left=(5+Math.random()*90)+'%'; d.style.animationDelay=(Math.random()*6)+'s'; d.style.animationDuration=(7+Math.random()*5)+'s'; d.style.width=d.style.height=(5+Math.random()*7)+'px'; s.appendChild(d); } }
@@ -1187,7 +1233,7 @@ async function refreshLive(){ const d=await fetchResults(); if(!d) return; const
   // count up, and grow the mosaic one member at a time
   const from=liveN; const start=performance.now(); const dur=Math.min(1600,300+Math.abs(n-from)*40);
   const step=t=>{ const k=Math.min(1,(t-start)/dur); const v=Math.round(from+(n-from)*(1-Math.pow(1-k,3))); $('#wLiveN').textContent=v; if(k<1) requestAnimationFrame(step); }; requestAnimationFrame(step);
-  const total=CONFIG.memberTotal||0; const cap=total>0?Math.min(total,600):400; const want=Math.min(n,cap);
+  const total=d.memberTotal||CONFIG.memberTotal||0; const cap=total>0?Math.min(total,600):400; const want=Math.min(n,cap);
   if(total>0){ box.classList.add('scaled'); const lbl=$('#wLiveLbl'); if(lbl) lbl.textContent='of '+total+' members have spoken'; if(box.children.length!==cap){ box.innerHTML=''; for(let k=0;k<cap;k++){ const s=document.createElement('i'); s.className='off'; s.style.animation='none'; box.appendChild(s); } }
     [...box.children].forEach((s,k)=>{ const lit=k<want; const was=s.classList.contains('on'); s.classList.toggle('on',lit); s.classList.toggle('off',!lit); s.classList.toggle('new',lit&&!was&&from>0); if(lit&&!was) s.style.animationDelay=Math.min(1200,(k-from)*18)+'ms'; }); }
   else { while(box.children.length>want) box.lastChild.remove();
@@ -1240,7 +1286,7 @@ function renderResults(data){
   let h=`<div class="hero"><div class="n cnt" data-v="${data.n}">${data.n}</div><div class="l">members have answered so far</div><div class="upd"><i></i>Live · updated ${hh} · refreshes every 20 seconds</div>${data.sample?'<div class="sample">Sample data · not real responses</div>':''}</div>`;
   h+=readingHTML(data);
   const dl=['Thu','Fri','Sat','Sun','Mon','Tue']; const mx=Math.max(1,...(data.days||[1]));
-  if(data.days&&data.days.length) h+=`<div class="chart"><h3>Responses by day</h3><div class="days">`+data.days.map(d=>`<div data-n="${d}" style="height:${Math.max(3,d/mx*100)}%"></div>`).join('')+`</div><div class="dayl">`+dl.slice(0,data.days.length).map(x=>`<span>${x}</span>`).join('')+`</div></div>`;
+  if(data.days&&data.days.length) h+=`<div class="chart"><h3>Responses by day</h3><div class="days">`+data.days.map(d=>`<div data-n="${d}" style="height:${Math.max(3,d/mx*100)}%"></div>`).join('')+`</div><div class="dayl">`+(data.dayLabels&&data.dayLabels.length===data.days.length?data.dayLabels.map(x=>`<span>${x.slice(8)}/${x.slice(5,7)}</span>`):dl.slice(0,data.days.length).map(x=>`<span>${x}</span>`)).join('')+`</div></div>`;
   Q.filter(q=>['single','multi','pick3'].includes(q.type)).forEach(q=>{ h+=bars(q,data); });
   const demo=(obj,title)=>{ const es=Object.entries(obj||{}); if(!es.length) return ''; const tot=es.reduce((a,[,v])=>a+v,0)||1; const mx=Math.max(...es.map(a=>a[1]));
     return `<div class="chart"><h3>${title}</h3><div class="sub">A group under 10 responses is shown as "under 10", so no one can be singled out</div><div class="rows">`+es.map(([k,v])=>`<div class="row2"><span class="lab">${k}</span><span class="val">${v<10?'under 10':v+' · '+Math.round(v/tot*100)+'%'}</span><div class="trk"><i style="--w:${v<10?0:v/mx*100}%"></i></div></div>`).join('')+`</div></div>`; };
@@ -1309,7 +1355,7 @@ function priorityGaps(rows){ const n=rows.length||1; const c15={}; rows.forEach(
   return Object.entries(c15).sort((a,b)=>b[1]-a[1]).map(([o,v])=>({o,p:Math.round(v/n*100),reach:map[o]})); }
 function trendByDay(rows){ const m={}; rows.forEach(r=>{ const d=r.at.slice(0,10); (m[d]=m[d]||[]).push(r); }); return Object.keys(m).sort().map(d=>({d,n:m[d].length,sat:satIdx(m[d])})); }
 function signals(rows){ const out=[]; const all=satIdx(rows); groups(rows).slice(1).forEach(([l,g])=>{ if(g.length<MIN) return; const s=satIdx(g); if(s!=null&&all!=null&&s<=all-10) out.push(`<span class="bad">${l}: satisfaction ${s}, ${all-s} below the whole</span>`); if(s!=null&&all!=null&&s>=all+10) out.push(`<span class="good">${l}: satisfaction ${s}, ${s-all} above the whole</span>`); });
-  const gov=['q10','q11','q12','q09'].map(q=>[SHORT[q],posShare(rows,q)]).filter(x=>x[1]).sort((a,b)=>a[1].p-b[1].p); if(gov.length) out.push(`<span class="${gov[0][1].p<50?'bad':''}">Weakest: ${gov[0][0].toLowerCase()}, ${gov[0][1].p}%</span>`);
+  const gov=['q10','q11','q12','q09'].map(q=>[SHORT[q],posShare(rows,q)]).filter(x=>x[1]).sort((a,b)=>a[1].p-b[1].p); if(gov.length) out.push(`<span class="${gov[0][1].p<50?'bad':''}">Lowest score: ${gov[0][0].toLowerCase()}, ${gov[0][1].p}%</span>`);
   const least={}; rows.forEach(r=>{ if(r.a.q06&&r.a.q06!=='Everyone is well served') least[r.a.q06]=(least[r.a.q06]||0)+1; }); const le=Object.entries(least).sort((a,b)=>b[1]-a[1])[0]; if(le) out.push(`<span>Least served: ${le[0]}, named by ${Math.round(le[1]/(rows.length||1)*100)}%</span>`);
   return out; }
 function renderAnalysis(d){ const rows=d.rows||[]; if(!rows.length) return `<div class="note">No responses yet. The analysis fills in as answers arrive.</div>`;
@@ -1419,7 +1465,7 @@ const WELCOME_ENV = {fps:20, bands:16, data:"kb00000000000000tl70000000000000xvs
   function envAt(t){ const f=Math.min(EF-1,Math.max(0,Math.floor(t*ENV.fps))); for(let b=0;b<EB;b++){ const v=parseInt(ENV.data[f*EB+b],36)/35; sm[b]=sm[b]*0.6+v*0.4; } return sm; }
   function wire(){ /* no Web Audio: keep the element on the normal media path so it plays on every phone */ }
   function draw(ts){
-    if(!t0) t0=ts; const s=(ts-t0)/1000; const W=cv.width, H=cv.height, cx=W/2, cy=H/2; g.clearRect(0,0,W,H);
+    if(!t0) t0=ts; if(au.paused&&current!=='welcome'&&current!=='gate'){ raf=0; return; } const s=(ts-t0)/1000; const W=cv.width, H=cv.height, cx=W/2, cy=H/2; g.clearRect(0,0,W,H);
     const N=64, r0=160, playing=!au.paused&&!au.ended; let amp=0; const env=playing?envAt(au.currentTime):null;
     g.lineCap='round';
     for(let i=0;i<N;i++){
@@ -1433,6 +1479,7 @@ const WELCOME_ENV = {fps:20, bands:16, data:"kb00000000000000tl70000000000000xvs
     raf=requestAnimationFrame(draw);
   }
   function wavesOn(){ cv.classList.add('on'); if(!raf) raf=requestAnimationFrame(draw); }
+  window.__wavesOn=wavesOn;
   au.addEventListener('play',()=>cv.parentElement.classList.add('voice')); au.addEventListener('pause',()=>cv.parentElement.classList.remove('voice')); au.addEventListener('ended',()=>cv.parentElement.classList.remove('voice'));
   function wavesIdle(){ /* keep breathing faintly after the clip ends */ }
 
@@ -1491,13 +1538,13 @@ const LOSS_AUDIO = "data:audio/mpeg;base64,SUQzBAAAAAAAI1RTU0UAAAAPAAADTGF2ZjYwL
 (function(){
   if(!LOSS_AUDIO) return;
   const btn=$('#duaBtn'); if(!btn) return; btn.hidden=false;
-  const au=new Audio(LOSS_AUDIO); au.preload='auto';
+  const au=new Audio(LOSS_AUDIO); au.preload='auto'; window.__lossAudio=au;
   au.addEventListener('ended',()=>btn.classList.remove('playing'));
   btn.addEventListener('click',e=>{ e.stopPropagation(); if(!au.paused){ au.pause(); btn.classList.remove('playing'); return; }
     document.querySelectorAll('audio').forEach(x=>x.pause()); window.__welcomeAudio&&window.__welcomeAudio.pause&&window.__welcomeAudio.pause();
     au.currentTime=0; au.play().then(()=>{ btn.classList.add('playing'); btn.classList.add('played'); }).catch(()=>{}); });
   // stop when the member leaves the page
-  document.addEventListener('click',e=>{ if(!au.paused&&(e.target.closest('#storyNext')||e.target.closest('#storyBack')||e.target.closest('#storySkip'))){ au.pause(); btn.classList.remove('playing'); } },true);
+  document.addEventListener('click',e=>{ if(!au.paused&&(e.target.closest('#storyNext')||e.target.closest('#storyBack')||e.target.closest('.skipbtn'))){ au.pause(); btn.classList.remove('playing'); } },true);
 })();
 
 if(state.submitted&&(ADMIN||!ENDPOINT)){
@@ -1507,27 +1554,41 @@ if(state.submitted&&(ADMIN||!ENDPOINT)){
   const box=document.createElement('div'); box.className='resume'; box.innerHTML=`<div class="box"><h3>You have already answered.</h3><p>JazakAllah Khair. One answer per member keeps the picture honest. If this phone is shared, another member may answer below.</p><button class="btn btn-navy" id="resumeDone">Close</button><button class="btn linkbtn" id="resumeAgain" style="color:var(--navy);min-height:44px">Another member will answer</button></div>`;
   $('#shell').appendChild(box);
   $('#resumeDone').addEventListener('click',()=>{ box.remove(); show('done'); spawnStars(); $('#doneSub').textContent='Your answers were received earlier. Shukriya for taking the time.'; });
-  $('#resumeAgain').addEventListener('click',()=>{ box.remove(); state={answers:{},idx:0,order:{},started:Date.now()}; save(); if(typeof syncLiveGate==='function') syncLiveGate(); });
+  $('#resumeAgain').addEventListener('click',()=>{ box.remove(); state={answers:{},idx:0,order:{},started:Date.now()}; save(); newDevice(); if(typeof syncLiveGate==='function') syncLiveGate(); toast('Ready for the next member.'); });
 } else if(Object.keys(state.answers).length){
   const box=document.createElement('div'); box.className='resume'; box.innerHTML=`<div class="box"><h3>Welcome back.</h3><p>You answered ${Object.keys(state.answers).length} of ${qTotal()} questions earlier. Carry on where you left off?</p><button class="btn btn-navy" id="resumeYes">Continue</button><button class="btn linkbtn" id="resumeNo" style="color:var(--navy);min-height:44px">Start again</button></div>`;
   $('#shell').appendChild(box);
   $('#resumeYes').addEventListener('click',()=>{ box.remove(); state.started=state.started||Date.now(); startSurvey(); });
   $('#resumeNo').addEventListener('click',()=>{ box.remove(); state={answers:{},idx:0,order:{},started:Date.now()}; save(); });
 }
-})();
 
 /* ---------- overflow chevrons: watch every scrolling panel ---------- */
 (function(){
   const CHEV='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>';
   const watched=new Set();
-  function check(sc){ const more=sc.scrollHeight-sc.clientHeight-sc.scrollTop>24; sc.classList.toggle('has-more',more); }
+  function check(sc){ if(!sc.querySelector(':scope>.more-hint')){ const d=document.createElement('div'); d.className='more-hint'; d.innerHTML='<i>'+CHEV+'</i>'; sc.appendChild(d); } const more=sc.scrollHeight-sc.clientHeight-sc.scrollTop>24; sc.classList.toggle('has-more',more); }
   function watch(sc){ if(watched.has(sc)) return; watched.add(sc); if(!sc.querySelector(':scope>.more-hint')){ const d=document.createElement('div'); d.className='more-hint'; d.innerHTML='<i>'+CHEV+'</i>'; sc.appendChild(d); } sc.addEventListener('scroll',()=>check(sc),{passive:true}); check(sc); }
-  function scan(){ document.querySelectorAll('.page .stage, #done, .rs, .q.active .opts').forEach(sc=>{ const cs=getComputedStyle(sc); if(/(auto|scroll)/.test(cs.overflowY)) watch(sc); }); watched.forEach(check); }
+  function scan(){ document.querySelectorAll('.page .stage, #welcome .stage, #done, .rs, .q.active .opts').forEach(sc=>{ const cs=getComputedStyle(sc); if(/(auto|scroll)/.test(cs.overflowY)) watch(sc); }); watched.forEach(check); }
   window.__moreScan=scan;
   new MutationObserver(()=>{ clearTimeout(window.__moreT); window.__moreT=setTimeout(scan,120); }).observe(document.body,{childList:true,subtree:true,attributes:true,attributeFilter:['class']});
   window.addEventListener('resize',()=>setTimeout(scan,150)); setTimeout(scan,400); setInterval(()=>watched.forEach(check),1500);
 })();
 
+
+/* ---------- the thank-you screen: your answers beside the community's, computed from the live summary ---------- */
+async function renderGlance(){ const el=$('#glance'); if(!el) return; const a=state.answers||{}; const d=await fetchResults(); if(!d||!d.counts||!(d.n>0)){ el.hidden=true; return; }
+  const n=Math.max(1,d.n); const share=(qid,opts)=>{ const c=d.counts[qid]||{}; const tot=Object.values(c).reduce((x,y)=>x+y,0)||1; return Math.round(opts.reduce((x,o)=>x+(c[o]||0),0)/tot*100); };
+  const rows=[];
+  if(a.q01){ const pos=["Very satisfied","Satisfied"].includes(a.q01); rows.push(`<div class="g-row"><span class="g-you">You said: ${a.q01.toLowerCase()}</span><span class="g-all">${share('q01',["Very satisfied","Satisfied"])}% of members so far are satisfied or very satisfied</span></div>`); }
+  if(a.q13){ rows.push(`<div class="g-row"><span class="g-you">You feel welcome ${a.q13.toLowerCase()}</span><span class="g-all">${share('q13',["Always","Mostly"])}% always or mostly</span></div>`); }
+  const c15=d.counts.q15||{}; const top=Object.entries(c15).sort((x,y)=>y[1]-x[1]).slice(0,3).map(x=>x[0]);
+  if(Array.isArray(a.q15)&&a.q15.length){ const mine=a.q15; const shared=mine.filter(x=>top.includes(x)).length;
+    rows.push(`<div class="g-pri"><div class="g-k">Your three for the next term</div>${mine.map(o=>`<div class="g-p${top.includes(o)?' hit':''}"><i></i>${o}<small>${Math.round((c15[o]||0)/n*100)}% of members chose this</small></div>`).join('')}<div class="g-note">${shared===3?'All three are in the community\'s top three.':shared?`${shared===1?'One':'Two'} of yours ${shared===1?'is':'are'} in the community\'s top three.`:'None of yours is in the community\'s top three yet. Your vote moved it.'}</div></div>`); }
+  if(!rows.length){ el.hidden=true; return; }
+  el.innerHTML=`<div class="g-title">Your answers, beside everyone's</div>${rows.join('')}<div class="g-sub">${d.n} ${d.n===1?'member has':'members have'} answered so far${d.sample?' · sample data':''}. The full picture is one tap above.</div>`; el.hidden=false; }
+
+
+})();
 </script>
 
 </body>
