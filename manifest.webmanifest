@@ -1,0 +1,29 @@
+{
+ "name": "ACS Member Survey 2026",
+ "short_name": "ACS Survey",
+ "description": "Ahlebait Cultural Society, Gurgaon: the end-of-term member survey of the Governing Council 2023 to 2026.",
+ "start_url": "./",
+ "scope": "./",
+ "display": "standalone",
+ "orientation": "portrait",
+ "background_color": "#071F36",
+ "theme_color": "#071F36",
+ "icons": [
+  {
+   "src": "icon-192.png",
+   "sizes": "192x192",
+   "type": "image/png"
+  },
+  {
+   "src": "icon-512.png",
+   "sizes": "512x512",
+   "type": "image/png"
+  },
+  {
+   "src": "icon-maskable-512.png",
+   "sizes": "512x512",
+   "type": "image/png",
+   "purpose": "maskable"
+  }
+ ]
+}
