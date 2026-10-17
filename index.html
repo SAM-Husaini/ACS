@@ -132,6 +132,10 @@ html.big-text #shell{zoom:1.12}
 .w-meta{display:flex;flex-wrap:wrap;gap:6px 14px;font-size:12px;white-space:nowrap;font-weight:600;color:rgba(255,255,255,.72);letter-spacing:.04em;line-height:1.2}
 .w-meta span::before{content:"";display:inline-block;width:5px;height:5px;border-radius:5px;background:var(--gold);margin-right:7px;vertical-align:middle}
 .w-actions{display:flex;flex-direction:column;gap:var(--s1);margin-top:var(--s1)}
+/* the two welcome buttons stay in view while the welcome text scrolls above them */
+#welcome .w-actions{position:sticky;bottom:0;z-index:4;padding:12px 0 max(14px,env(safe-area-inset-bottom,0px));margin:6px calc(-1*var(--gr)) 0 calc(-1*var(--gl));padding-left:var(--gl);padding-right:var(--gr);background:linear-gradient(180deg,rgba(7,31,54,0) 0%,#071F36 26%)}
+#welcome .body{padding-bottom:0}
+#welcome .stage>.more-hint{display:none!important}
 
 
 /* 3D eight-point star: two squares, 45 degrees apart, turned in space */
@@ -852,7 +856,9 @@ html.show-swipe .swipe{position:static;transform:none;background:var(--cream);-w
 .q h2{margin-top:6px}
 .q .why{font-size:14px}
 .opts{padding:8px 2px 10px;margin-top:2px}
-.opts.fill .opt{min-height:48px;max-height:64px}
+.opt{flex:0 0 auto}
+.opts.fill{flex:0 1 auto;max-height:calc(var(--n,5) * 72px + 26px)}
+.opts.fill .opt{flex:1 0 auto;min-height:48px;max-height:none}
 .qfoot{gap:4px;padding-top:2px;padding-bottom:max(20px,env(safe-area-inset-bottom,0px))}
 .qfoot .row .btn{min-height:50px}
 .btn-sq{flex:0 0 50px;width:50px}
@@ -1047,7 +1053,7 @@ function show(name, dir='fwd'){
   if(name!=='welcome'&&name!=='gate'){ try{ if(window.__welcomeAudio&&!window.__welcomeAudio.paused) window.__welcomeAudio.pause(); }catch(e){} }
   try{ if(window.__moreScan) setTimeout(window.__moreScan,250); }catch(e){}
 }
-function toast(msg){ const t=$('#toast'); t.textContent=msg; t.classList.add('show'); setTimeout(()=>t.classList.remove('show'),2200); }
+let toastT=null; function toast(msg,ms){ const t=$('#toast'); t.textContent=msg; t.classList.add('show'); clearTimeout(toastT); toastT=setTimeout(()=>t.classList.remove('show'),ms||2200); }
 const ACADEMY_MISSION = "To inspire the children of Gurgaon to be God-conscious, seek knowledge about their religion, bond together as a community and forever learn to associate Islamic learning with felicity, success and happiness.";
 const ACADEMY_VISION = "Raising a community of children to know God, seek knowledge, and find joy in both."; // from the Academy's second-anniversary invitation; confirm with the adopted Vision text
 const COMPASS = `<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" class="motif compass" aria-hidden="true"><g fill="none" stroke="#C9AF7B" stroke-width=".7"><circle cx="100" cy="100" r="92"/><circle cx="100" cy="100" r="84"/><circle cx="100" cy="100" r="58"/><circle cx="100" cy="100" r="6"/><path d="M100 12 L108 92 L100 100 L92 92 Z"/><path d="M100 188 L108 108 L100 100 L92 108 Z"/><path d="M12 100 L92 92 L100 100 L92 108 Z"/><path d="M188 100 L108 92 L100 100 L108 108 Z"/><path d="M38 38 L96 90 L100 100 L90 96 Z"/><path d="M162 38 L104 90 L100 100 L110 96 Z"/><path d="M38 162 L96 110 L100 100 L90 104 Z"/><path d="M162 162 L104 110 L100 100 L110 104 Z"/><path d="M100 12 L100 100" opacity=".5"/><path d="M100 100 L188 100" opacity=".5"/></g><g stroke="#C9AF7B" stroke-width=".7">${Array.from({length:72},(_,i)=>{const a=i*5*Math.PI/180, r1=i%9===0?78:82, x1=100+Math.sin(a)*r1,y1=100-Math.cos(a)*r1,x2=100+Math.sin(a)*84,y2=100-Math.cos(a)*84; return `<path d="M${x1.toFixed(1)} ${y1.toFixed(1)} L${x2.toFixed(1)} ${y2.toFixed(1)}"/>`;}).join('')}</g><text x="100" y="9" text-anchor="middle" font-size="7" fill="#C9AF7B" font-family="Manrope,sans-serif" font-weight="700">N</text></svg>`;
@@ -1217,7 +1223,7 @@ Q.forEach((q,i)=>{
   let inner=`<div class="head"><div class="ic">${ICON[q.sect]||''}</div><div class="sect">${q.sect}${q.type==='about'?' · optional':''}</div></div>${q.why?`<p class="why">${q.why}</p>`:''}<h2>${q.t}</h2>${q.hint?`<p class="hint">${q.hint}</p>`:''}`;
   if(q.type==='single'||q.type==='multi'||q.type==='pick3'){
     const opts=shuffled(q); const list=q.none?opts.concat([q.none]):opts;
-    inner+=`<div class="opts${list.length<=6?' fill':''}" role="${q.type==='single'?'radiogroup':'group'}">`+list.map(o=>`<button class="opt${q.type==='single'?'':' multi'}" data-v="${o.replace(/"/g,'&quot;')}" role="${q.type==='single'?'radio':'checkbox'}" aria-checked="false"><span>${o}</span>${TICK}</button>`).join('')+`</div>`;
+    inner+=`<div class="opts${list.length<=6?' fill':''}" style="--n:${list.length}" role="${q.type==='single'?'radiogroup':'group'}">`+list.map(o=>`<button class="opt${q.type==='single'?'':' multi'}" data-v="${o.replace(/"/g,'&quot;')}" role="${q.type==='single'?'radio':'checkbox'}" aria-checked="false"><span>${o}</span>${TICK}</button>`).join('')+`</div>`;
   } else if(q.type==='open'){
     inner+=`<div class="opts">`+q.fields.map(f=>`<label class="lab" for="${q.id}_${f.k}">${f.l}</label><textarea id="${q.id}_${f.k}" maxlength="200" placeholder="${f.k==='keep'?'What should the next Council protect?':'What should the next Council change?'}"></textarea>`).join('')+`</div>`;
   } else if(q.type==='about'){
@@ -1233,7 +1239,7 @@ function adapt(q,el){ // small intelligence: the screen reads what the member sa
   if(q.id==='q08'){ const v=state.answers.q08; if(v==='I did not know it existed'||v==='None, but I know of it') txt='Eight editions so far. The latest is on page 2 of the three years, in the menu.'; }
   if(q.type==='about'){ const n=state.answers.q18; const lab=el.querySelector('label[for="aboutName"] .optional'); if(lab) lab.textContent = (n&&n!=='None that I can think of') ? `· you offered to introduce ${n.toLowerCase()}; leave your name so the Council can take you up on it` : '· only if you would like the Council to follow up'; }
   note.textContent=txt; note.hidden=!txt; }
-function renderQ(i,dir='fwd'){
+function renderQ(i,dir='fwd'){ try{ if(i===0&&!localStorage.getItem('acs_texthint')){ localStorage.setItem('acs_texthint','1'); setTimeout(()=>toast('Text too small? Tap the ≡ menu for larger text.',3600),1400); } }catch(e){}
   const prev=qEls[qi]; qi=i; const q=Q[i], el=qEls[i];
   qEls.forEach(e=>e.classList.remove('active','back','exit'));
   if(prev&&prev!==el&&dir==='fwd'){ prev.classList.add('exit'); setTimeout(()=>prev.classList.remove('exit'),450); }
