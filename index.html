@@ -498,7 +498,10 @@ html.big-text #shell{zoom:1.12}
 .page.times .mast img{width:100%;display:block}
 /* nav */
 .dots{display:flex;justify-content:center;gap:5px;padding:var(--s1) 0 0;background:var(--cream);position:relative}
-.swipe{display:none;position:absolute;left:50%;bottom:calc(100% + 10px);transform:translateX(-50%);align-items:center;gap:7px;padding:7px 12px;border-radius:999px;background:var(--cream);color:var(--navy);box-shadow:0 6px 18px rgba(7,31,54,.18);font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;pointer-events:none;white-space:nowrap;z-index:3}
+.swipe{display:none;position:absolute;left:50%;bottom:calc(100% + 10px);transform:translateX(-50%);align-items:center;gap:7px;padding:7px 12px;border-radius:999px;background:rgba(244,237,225,.55);-webkit-backdrop-filter:blur(4px);backdrop-filter:blur(4px);border:1px solid rgba(201,175,123,.55);color:var(--navy);box-shadow:0 6px 18px rgba(7,31,54,.14);font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;pointer-events:none;white-space:nowrap;z-index:3}
+.swipe svg.r{animation-name:swipenudge-r}
+@keyframes swipenudge-r{0%,100%{transform:translateX(0)}50%{transform:translateX(4px)}}
+html.show-swipe .page.compass .cnote{opacity:0}
 .swipe svg{animation:swipenudge 1.6s ease-in-out infinite}
 html.show-swipe .swipe{display:flex;animation:fadein .6s 1.4s both}
 @keyframes swipenudge{0%,100%{transform:translateX(0)}50%{transform:translateX(-5px)}}
@@ -524,8 +527,8 @@ html.show-swipe .swipe{display:flex;animation:fadein .6s 1.4s both}
 .q{position:absolute;inset:0;padding:0 var(--gr) 0 var(--gl);display:flex;flex-direction:column;opacity:0;visibility:hidden;transform:translateX(30px);transition:opacity .4s var(--ease),transform .4s var(--ease),visibility 0s linear .4s}
 .q.active{opacity:1;visibility:visible;transform:none;transition-delay:0s}
 .q.back{transform:translateX(-30px)} .q.exit{transform:translateX(-30px)}
-.q .head{display:flex;align-items:center;gap:12px;margin-top:var(--s3)}
-.q .head .ic{flex:0 0 40px;width:40px;height:40px;border-radius:11px;background:var(--gold-wash);display:grid;place-items:center;color:var(--navy)}
+.q .head{display:flex;align-items:center;gap:10px;margin-top:14px}
+.q .head .ic{flex:0 0 34px;width:34px;height:34px;border-radius:10px;background:var(--gold-wash);display:grid;place-items:center;color:var(--navy)}
 .q .head .ic svg{width:22px;height:22px;stroke:currentColor;fill:none;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
 .q .sect{font-size:11px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--gold-deep);line-height:1.2}
 .q.newsect .head{animation:secin .7s var(--ease) both}
@@ -534,13 +537,13 @@ html.show-swipe .swipe{display:flex;animation:fadein .6s 1.4s both}
 @keyframes secpulse{0%{box-shadow:0 0 0 0 rgba(201,175,123,.0)}30%{box-shadow:0 0 0 6px rgba(201,175,123,.45)}100%{box-shadow:0 0 0 14px rgba(201,175,123,0)}}
 @media (prefers-reduced-motion:reduce){.q.newsect .head,.q.newsect .head .ic{animation:none!important}}
 @media (max-height:740px){.q[data-type="about"] .opt{padding:11px 52px 11px 18px;font-size:15px}}
-.q h2{font-family:var(--display);font-weight:500;font-size:clamp(24px,6.8vw,28px);line-height:1.15;letter-spacing:-.015em;color:var(--ink-navy);margin-top:var(--s2);text-wrap:balance}
+.q h2{font-family:var(--display);font-weight:500;font-size:clamp(22px,6.2vw,26px);line-height:1.14;letter-spacing:-.015em;color:var(--ink-navy);margin-top:10px;text-wrap:balance}
 .q .hint{font-size:14px;color:var(--ink-2);margin-top:var(--s1);line-height:1.45}
 .q .hint.adapt{color:var(--gold-deep);font-weight:600;font-size:13px;border-left:2px solid var(--gold);padding-left:10px;animation:rise .5s var(--ease) both}
 .q .hint.adapt[hidden]{display:none}
-.opts{display:flex;flex-direction:column;gap:var(--s1);overflow:auto;overflow-x:hidden;overflow-x:clip;padding:var(--s2) 2px var(--s3);margin-top:var(--s1);flex:1;min-height:0;-webkit-overflow-scrolling:touch}
-.opts.fill .opt{flex:1 1 auto;min-height:56px;max-height:84px}
-.opt{position:relative;text-align:left;border:1.5px solid var(--line);background:var(--paper);border-radius:14px;padding:14px 52px 14px 18px;font-size:16px;font-weight:500;line-height:1.3;color:var(--ink);overflow:hidden;transition:border-color .2s,transform .15s var(--ease),color .2s;min-height:56px;display:flex;align-items:center}
+.opts{display:flex;flex-direction:column;gap:var(--s1);overflow:auto;overflow-x:hidden;overflow-x:clip;padding:10px 2px 14px;margin-top:4px;flex:1;min-height:0;-webkit-overflow-scrolling:touch}
+.opts.fill .opt{flex:1 1 auto;min-height:50px;max-height:68px}
+.opt{position:relative;text-align:left;border:1.5px solid var(--line);background:var(--paper);border-radius:14px;padding:12px 50px 12px 16px;font-size:16px;font-weight:500;line-height:1.3;color:var(--ink);overflow:hidden;transition:border-color .2s,transform .15s var(--ease),color .2s;min-height:56px;display:flex;align-items:center}
 .opt::before{content:"";position:absolute;inset:0;background:var(--navy);transform:scaleX(0);transform-origin:left;transition:transform .35s var(--ease)}
 .opt span{position:relative;z-index:1}
 .opt .tick{position:absolute;right:16px;top:50%;width:24px;height:24px;margin-top:-12px;border-radius:999px;border:1.5px solid #948770;z-index:1;transition:border-color .2s,background .2s;background:var(--paper)}
@@ -554,7 +557,7 @@ html.show-swipe .swipe{display:flex;animation:fadein .6s 1.4s both}
 .opt.multi .tick{border-radius:7px}
 .opt.dim{opacity:.6}
 .qwrap::after{content:"";position:absolute;left:0;right:0;bottom:0;height:24px;background:linear-gradient(180deg,rgba(244,237,225,0),var(--cream));pointer-events:none}
-.qfoot{display:flex;flex-direction:column;gap:var(--s1);padding-bottom:var(--bot);padding-top:var(--s1)}
+.qfoot{display:flex;flex-direction:column;gap:6px;padding-bottom:var(--bot);padding-top:4px}
 .qfoot .row{display:flex;gap:var(--s1)}
 .counter{font-size:13px;color:var(--ink-2);text-align:center;font-variant-numeric:tabular-nums;line-height:1.2}
 textarea,input[type=text]{width:100%;border:1.5px solid var(--line);background:var(--paper);border-radius:14px;padding:14px 16px;font:inherit;font-size:16px;color:var(--ink);resize:none;min-height:92px}
@@ -847,7 +850,7 @@ label.lab{display:block;font-size:11.5px;font-weight:700;letter-spacing:.14em;te
 
 
 /* why-we-are-asking line, first question of each section */
-.q .why{font-family:var(--display);font-style:italic;font-weight:400;font-size:15.5px;line-height:1.4;color:var(--gold-deep);margin:-2px 0 2px;max-width:32ch;text-wrap:pretty}
+.q .why{font-family:var(--display);font-style:italic;font-weight:400;font-size:14.5px;line-height:1.35;color:var(--gold-deep);margin:0;max-width:36ch;text-wrap:pretty}
 /* thank-you: your answers beside everyone's */
 .glance{position:relative;z-index:1;width:100%;margin-top:18px;text-align:left;background:rgba(255,255,255,.05);border:1px solid rgba(201,175,123,.35);border-radius:16px;padding:14px 16px 12px;animation:rise .9s 1.6s var(--ease) both}
 .glance .g-title{font-size:11px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);margin-bottom:10px}
@@ -923,7 +926,7 @@ html.show-swipe .page .more-hint{display:none!important}
 
 <section class="screen" id="story" aria-label="The three years">
   <div class="deck" id="deck"></div>
-  <div class="dots" id="dots"><div class="swipe" id="swipeHint" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M11 6l-6 6 6 6"/></svg>Swipe to turn the pages</div></div>
+  <div class="dots" id="dots"><div class="swipe" id="swipeHint" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M11 6l-6 6 6 6"/></svg>Swipe either way<svg class="r" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div></div>
   <div class="story-nav gut">
     <button class="btn btn-sq" id="storyBack" aria-label="Previous"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M11 6l-6 6 6 6"/></svg></button>
     <button class="btn btn-navy btn-fwd" id="storyNext"><span>Next</span><svg class="fwd" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
@@ -1085,7 +1088,7 @@ const pages=[
  {cls:"photo ramadan",img:A.ramadanPhoto,pos:"50% 22%",k:"07 · Ramadan",html:`<h2>Ramadan relief for Gurgaon's poorest, <em>whatever their faith.</em></h2><div class="appeal r"><img src="${A.ramadanPoster}" alt="The Ramadan food drive appeal"><div><b>The fast that never ends.</b><span>Your fast ends at sunset. Theirs never does. One packet, one family, ₹600.</span></div></div><div class="ledger"><span>Grocery packets delivered</span><b class="cnt" data-v="373">373</b><span>Contributors</span><b class="cnt" data-v="38">38</b><span>Volunteers who packed and drove</span><b class="cnt" data-v="17">17</b><span>Spent on the drive</span><b class="cnt" data-v="₹1,77,257">₹1,77,257</b><span class="tot">Raised, every rupee as amanah</span><b class="tot cnt" data-v="₹2,24,100">₹2,24,100</b></div><div class="credit">₹46,843 is held for the next family in need. Figures as published in ACS Times.</div>`},
  {cls:"quiet",k:"08 · Loss",html:`<div class="ar">إِنَّا لِلّٰهِ وَإِنَّا إِلَيْهِ رَاجِعُونَ</div><p class="translit">Inna lillahi wa inna ilaihi raji’oon. Allah (SWT) maghfirat farmaye. Aameen.</p><div class="rule"></div><h2>This year we lost two of our own.</h2><p>The community stood with both families, at the ghusl, the burial and the majalis. A Ta'awun framework was placed before the AGM so that no family in Gurgaon faces loss alone.</p><div class="names"><div class="mem"><span class="ph">${A.yaqub?`<img src="${A.yaqub}" alt="Yaqub Ali Ismail">`:``}</span><b>Yaqub Ali Ismail</b><span class="role">Secretary, and a towering community leader</span></div><div class="mem"><span class="ph">${A.zaheer?`<img src="${A.zaheer}" alt="Zaheer Abbas">`:``}</span><b>Zaheer Abbas</b><span class="role">Reciter of the Quran at our programmes</span></div></div><div class="dua"><button class="duabtn" id="duaBtn" type="button" hidden aria-label="Listen to the dua"><span class="dring"></span><svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor" aria-hidden="true"><path class="pl" d="M8 5.5v13a1 1 0 001.54.84l10-6.5a1 1 0 000-1.68l-10-6.5A1 1 0 008 5.5z"/><path class="pa" d="M7 5h3.5v14H7zM13.5 5H17v14h-3.5z" style="display:none"/></svg><span class="lt">دعا سنیے</span></button><div class="dua-hint">Tap to hear the dua for them both</div><div class="ar">اللّٰهُمَّ اغْفِرْ لَهُمَا وَارْحَمْهُمَا وَعَافِهِمَا وَاعْفُ عَنْهُمَا</div><p>O Allah, forgive them both, have mercy on them, grant them ease and pardon them. A Surah Fatiha for them both, please.</p></div>`},
  {cls:"photo markaz",img:A.markaz,pos:"50% 64%",k:"09 · Work in progress",html:`<h2>A home of our own. <em>Still unfinished.</em></h2><p>We applied under government land schemes and were not allotted land. We have since found a private plot we want to buy, and the discussions are under way. We are moving with deliberate care: a purchase of this kind must pass full due diligence before a rupee moves. That takes time. It is time well spent.</p><div class="credit">The picture is an artist's impression, not a design. The groundwork is real, and it passes to the next Council.</div>`},
- {cls:"navy end",k:"10 · Your turn",html:`<h2>Now, honestly: <em>how did we do?</em></h2><p>Twenty short questions, one to a screen. No name. Change anything until you send; then it is final, and the live results open to you. Members see the summary. The incoming Council reads every word.</p><button class="btn btn-gold" id="beginBtn">Begin</button>${MOTIF}`}
+ {cls:"navy end",k:"10 · Your turn",html:`<h2>Now, honestly: <em>how did we do?</em></h2><p>Twenty short questions, one to a screen. No name. Change anything until you send; then it is final, and the live results open to you. Members see the summary. The incoming Council reads every word.</p><button class="btn btn-gold" id="beginBtn">Begin the survey</button>${MOTIF}`}
 ];
 const deck=$('#deck'), dots=$('#dots'); let ci=0;
 pages.forEach((p,i)=>{
@@ -1129,7 +1132,7 @@ function deckCycle(el){ clearInterval(dcTimer); dcTimer=null; if(!el) return; co
   }
   if(nsUser) return; const tb=root.querySelector('.ctimer i'); if(tb){ tb.style.animation='none'; void tb.offsetWidth; tb.style.animation=''; } dcTimer=setInterval(()=>{ if(document.hidden) return; nsShow(root,(nsIdx+1)%3); },7000); }
 function setPage(i){ if(i>0&&document.documentElement.classList.contains('show-swipe')){ document.documentElement.classList.remove('show-swipe'); try{localStorage.setItem('acs_swiped','1')}catch(e){} } ci=i; dotEls.forEach((d,j)=>d.classList.toggle('on',j===i)); pageEls.forEach((p,j)=>p.classList.toggle('cur',j===i)); deckCycle(i===0&&current==='story'?pageEls[0]:null);
-  $('#storyNext').querySelector('span').textContent = i===pages.length-1 ? 'Begin' : 'Next'; pageEls[i].querySelectorAll('.cnt').forEach(countUp); }
+  $('#storyNext').querySelector('span').textContent = i===pages.length-1 ? 'Begin the survey' : 'Next'; pageEls[i].querySelectorAll('.cnt').forEach(countUp); }
 let st; deck.addEventListener('scroll',()=>{ const w=deck.clientWidth, x=deck.scrollLeft;
   pageEls.forEach((p,j)=>{ const im=p.querySelector('.img img'); if(im){ const off=(x-j*w)/w; im.style.transform=`translateX(${off*-16}%) scale(1.12)`; } });
   clearTimeout(st); st=setTimeout(()=>setPage(Math.round(x/w)),70); });
