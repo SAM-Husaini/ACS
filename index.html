@@ -838,6 +838,23 @@ label.lab{display:block;font-size:11.5px;font-weight:700;letter-spacing:.14em;te
 @media (max-height:760px){.cmp{width:min(62%,224px);margin-top:0}.ccard{min-height:150px}}
 @media (prefers-reduced-motion:reduce){.page.cur .cmp .bezel,.page.cur .cmp .lattice,.page.cur .cmp .sheen,.cmp .st.on .halo{animation:none}.ctimer i{animation:none!important}.cmp .needle{transition-duration:.4s}}
 
+
+/* ---- survey screens: give the options the height; a considered choice needs the choices in view ---- */
+#survey .band.sm{padding-top:max(10px,env(safe-area-inset-top,0px));padding-bottom:8px}
+#survey .segs{margin-top:10px}
+#survey .seglab{margin-top:5px}
+.q .head{margin-top:8px}
+.q .head .ic{flex:0 0 28px;width:28px;height:28px;border-radius:8px}
+.q .head .ic svg{width:18px;height:18px}
+.q h2{margin-top:6px}
+.q .why{font-size:14px}
+.opts{padding:8px 2px 10px;margin-top:2px}
+.opts.fill .opt{min-height:48px;max-height:64px}
+.qfoot{gap:4px;padding-top:2px;padding-bottom:max(20px,env(safe-area-inset-bottom,0px))}
+.qfoot .row .btn{min-height:50px}
+.btn-sq{flex:0 0 50px;width:50px}
+.counter{font-size:12.5px}
+@media (max-height:700px){.q h2{font-size:21.5px;line-height:1.12}.opt{padding:10px 46px 10px 14px;font-size:15.5px}.opts.fill .opt{min-height:46px}.q .why{font-size:13.5px}}
 /* ---- "there is more below": a gold chevron on any panel that overflows, gone once the reader reaches the end ---- */
 .more-hint{position:sticky;bottom:0;left:0;right:0;height:0;overflow:visible;z-index:6;display:none;justify-content:center;pointer-events:none;flex:0 0 auto}
 .more-hint i{display:grid;place-items:center;width:34px;height:34px;border-radius:50%;background:rgba(7,31,54,.6);border:1px solid rgba(201,175,123,.6);color:var(--gold);transform:translateY(-44px);box-shadow:0 6px 16px rgba(0,0,0,.25);backdrop-filter:blur(3px)}
