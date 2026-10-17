@@ -213,6 +213,10 @@ html.big-text #shell{zoom:1.12}
 #menu .m-row.cur{border-color:var(--navy);box-shadow:0 0 0 1px var(--navy) inset}
 #menu .m-row:disabled{opacity:.5;cursor:default}
 #menu .m-row[hidden]{display:none}
+.credit-line{font-size:12.5px;line-height:1.4;color:var(--ink-2);text-align:center;letter-spacing:.01em;padding:14px 0 2px}
+.credit-line b{font-weight:700;color:var(--navy)}
+.credit-line.on-dark{color:rgba(255,255,255,.62)}.credit-line.on-dark b{color:rgba(255,255,255,.9)}
+#menu .credit-line{padding:12px 0 0;font-size:12px}
 #menu .m-close{margin-top:6px;min-height:44px;border-radius:12px;border:0;background:var(--navy);color:#fff;font:inherit;font-weight:700;cursor:pointer}
 /* listen button */
 .listen[hidden]{display:none}
@@ -573,7 +577,7 @@ label.lab{display:block;font-size:11.5px;font-weight:700;letter-spacing:.14em;te
 /* ---------- RESULTS (live) ---------- */
 #results{background:var(--cream)}
 #results .bar{justify-content:space-between}
-.rs{flex:1;overflow:auto;min-height:0;padding-bottom:var(--bot);-webkit-overflow-scrolling:touch}
+.rs{flex:1;overflow:auto;min-height:0;padding-bottom:var(--s3);-webkit-overflow-scrolling:touch}
 .rs .hero{display:flex;flex-direction:column;gap:6px;padding:var(--s3) 0 var(--s2);border-bottom:1px solid var(--line)}
 .rs .hero .n{font-family:var(--display);font-weight:500;font-size:64px;line-height:1;color:var(--navy);letter-spacing:-.03em;font-variant-numeric:tabular-nums}
 .rs .hero .l{font-size:15px;color:var(--ink-2)}
@@ -975,6 +979,7 @@ html.show-swipe .swipe{position:static;transform:none;background:var(--cream);-w
 <section class="screen" id="results" aria-label="Live results">
   <div class="band sm gut"><img class="lockup" data-asset="lockup" alt="Ahlebait Cultural Society, Gurgaon (Regd.)"><span class="ctl"><span class="count" id="rsTitle">Live</span><button class="linkbtn" id="rsClose" style="color:var(--navy)">Close</button></span></div>
   <div class="rs gut" id="rsBody"></div>
+  <div class="qfoot gut rsfoot"><div class="row"><button class="btn btn-sq" id="rsBackTop" aria-label="Back to the top of the results"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5M5 12l7-7 7 7"/></svg></button><button class="btn btn-navy" id="rsHome">Back to the beginning</button></div></div>
 </section>
 
 <section class="screen" id="council" aria-label="Council view">
@@ -1004,7 +1009,7 @@ html.show-swipe .swipe{position:static;transform:none;background:var(--cream);-w
       <li><b>S I Mehdi</b><span>Treasurer</span></li>
     </ul>
   </div>
-  <div class="d-next gut" id="dNext"><div class="t">What happens next</div><ol><li><div><b>The survey closes</b><span>Your answers go to the Council in full</span></div></li><li><div><b>Every member gets the summary</b><span>What the community said, and what it asked for</span></div></li><li><div><b>Handover to the new Council</b><span>With your verdict in its hands</span></div></li></ol></div>
+  <div class="d-next gut" id="dNext"><div class="t">What happens next</div><ol><li><div><b>The survey closes</b><span>Your answers go to the Council in full</span></div></li><li><div><b>Every member gets the summary</b><span>What the community said, and what it asked for</span></div></li><li><div><b>Handover to the new Council</b><span>With your verdict in its hands</span></div></li></ol><div class="credit-line on-dark">Designed and developed by <b>PROFECTA Integrated Marketing Solutions</b></div></div>
 </section>
 
 <div class="toast" id="toast"></div>
@@ -1022,6 +1027,7 @@ html.show-swipe .swipe{position:static;transform:none;background:var(--cream);-w
     <button class="m-row" data-go="council" id="mCouncil" hidden><b>Council dashboard</b><span>Response rate, analysis by group, every question, comments, commitments and the handover export. Council only.</span></button>
     <button class="m-row m-text" id="mText" type="button"><b>Text size</b><span id="mTextS">Normal · tap for larger</span></button>
     <button class="m-close" id="menuClose">Close</button>
+    <div class="credit-line">Designed and developed by <b>PROFECTA Integrated Marketing Solutions</b></div>
   </div>
 </div>
 </div>
@@ -1239,7 +1245,8 @@ function adapt(q,el){ // small intelligence: the screen reads what the member sa
   if(q.id==='q08'){ const v=state.answers.q08; if(v==='I did not know it existed'||v==='None, but I know of it') txt='Eight editions so far. The latest is on page 2 of the three years, in the menu.'; }
   if(q.type==='about'){ const n=state.answers.q18; const lab=el.querySelector('label[for="aboutName"] .optional'); if(lab) lab.textContent = (n&&n!=='None that I can think of') ? `· you offered to introduce ${n.toLowerCase()}; leave your name so the Council can take you up on it` : '· only if you would like the Council to follow up'; }
   note.textContent=txt; note.hidden=!txt; }
-function renderQ(i,dir='fwd'){ try{ if(i===0&&!localStorage.getItem('acs_texthint')){ localStorage.setItem('acs_texthint','1'); setTimeout(()=>toast('Text too small? Tap the ≡ menu for larger text.',3600),1400); } }catch(e){}
+function renderQ(i,dir='fwd'){ try{ if(i===10&&dir==='fwd'&&!state.half){ state.half=1; save(); setTimeout(()=>toast('Halfway there. JazakAllah Khair for your time.',2600),500); } }catch(e){}
+  try{ if(i===0&&!localStorage.getItem('acs_texthint')){ localStorage.setItem('acs_texthint','1'); setTimeout(()=>toast('Text too small? Tap the ≡ menu for larger text.',3600),1400); } }catch(e){}
   const prev=qEls[qi]; qi=i; const q=Q[i], el=qEls[i];
   qEls.forEach(e=>e.classList.remove('active','back','exit'));
   if(prev&&prev!==el&&dir==='fwd'){ prev.classList.add('exit'); setTimeout(()=>prev.classList.remove('exit'),450); }
@@ -1260,7 +1267,8 @@ function renderQ(i,dir='fwd'){ try{ if(i===0&&!localStorage.getItem('acs_texthin
 function setNext(label){ const n=$('#qNext'); const s=n.querySelector('span'); if(s) s.textContent=label; else n.textContent=label; }
 function updateFoot(){
   const q=Q[qi], a=answer(q), next={ set textContent(v){ setNext(v); }, set disabled(v){ $('#qNext').disabled=v; } }, c=$('#counter');
-  if(q.type==='single'){ next.textContent=a?'Next':'Continue'; next.disabled=!a; c.textContent='You can change any answer until you send.'; }
+  const left=Q.filter((x,k)=>k>qi&&visibleQ(x)).length, mins=Math.max(1,Math.round(left*11/60)), tl=left>0?` · about ${mins} min left`:'';
+  if(q.type==='single'){ next.textContent=a?'Next':'Continue'; next.disabled=!a; c.textContent=(left>0?`About ${mins} min left. `:'')+'Change any answer until you send.'; }
   else if(q.type==='multi'){ next.textContent='Continue'; next.disabled=!(a&&a.length); c.textContent=a&&a.length?`${a.length} chosen`:'Choose one or more'; }
   else if(q.type==='pick3'){ const n=a?a.length:0; next.textContent='Continue'; next.disabled=n!==3; c.textContent=`${n} of 3 chosen`; qEls[qi].querySelectorAll('.opt').forEach(b=>b.classList.toggle('dim',n>=3&&!b.classList.contains('sel'))); }
   else if(q.type==='open'){ next.textContent='Continue'; next.disabled=false; c.textContent='Optional'; }
@@ -1384,7 +1392,7 @@ function renderResults(data){
     return `<div class="chart"><h3>${title}</h3><div class="sub">A group under 10 responses is shown as "under 10", so no one can be singled out</div><div class="rows">`+es.map(([k,v])=>`<div class="row2"><span class="lab">${k}</span><span class="val">${v<10?'under 10':v+' · '+Math.round(v/tot*100)+'%'}</span><div class="trk"><i style="--w:${v<10?0:v/mx*100}%"></i></div></div>`).join('')+`</div></div>`; };
   h+=demo(data.age,'Who has answered, by age group')+demo(data.gender,'Who has answered, women and men');
   h+=`<div class="chart"><h3>In members' words</h3><div class="sub">${data.comments||0} members have written what ACS must keep or change. Comments are not shown live, because in a community our size they can identify the writer. They go to the Council in full and into the summary shared with all members after the survey closes.</div></div>`;
-  h+=`<div class="note">Names are never shown anywhere. The Council sees a name only if a member chose to leave one.</div>`;
+  h+=`<div class="note">Names are never shown anywhere. The Council sees a name only if a member chose to leave one.</div><div class="credit-line">Designed and developed by <b>PROFECTA Integrated Marketing Solutions</b></div>`;
   body.innerHTML=h;
   requestAnimationFrame(()=>{ body.querySelectorAll('.trk i').forEach(i=>{ i.style.width=i.style.getPropertyValue('--w'); }); countUp(body.querySelector('.cnt')); });
 }
@@ -1505,6 +1513,8 @@ async function openResults(from){
   clearInterval(rsTimer); rsTimer=setInterval(load,20000); await load();
 }
 $('#rsClose').addEventListener('click',()=>{ clearInterval(rsTimer); show(rsFrom==='results'?'welcome':rsFrom,'back'); });
+$('#rsHome').addEventListener('click',()=>{ clearInterval(rsTimer); show('welcome','back'); try{ $('#welcome .stage').scrollTop=0; }catch(e){} });
+$('#rsBackTop').addEventListener('click',()=>{ $('#rsBody').scrollTo({top:0,behavior:'smooth'}); });
 $('#seeResults').addEventListener('click',()=>openResults('done'));
 function syncLiveGate(){ const card=$('#wLive'), go=card&&card.querySelector('.go'); if(!go) return; const open=!!state.submitted;
   go.hidden=!open; card.classList.toggle('static',!open); card.setAttribute('aria-label', open?'Watch the live results':'Members who have answered so far'); }
