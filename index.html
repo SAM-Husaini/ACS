@@ -826,10 +826,10 @@ html.show-swipe .swipe{position:static;transform:none;background:var(--cream);-w
 .cmp .st .halo{fill:none;stroke:var(--gold-deep);stroke-width:1.2;opacity:0}
 .cmp .st.on .halo{animation:chalo 2.4s ease-out infinite}
 .cmp .glow{opacity:0;transition:opacity .8s}.cmp.live .glow{opacity:1}
-.cseg{position:relative;display:grid;grid-template-columns:repeat(3,1fr);margin-top:8px;padding:4px;border-radius:999px;background:rgba(18,75,124,.07);border:1px solid var(--line)}
-.cseg .ind{position:absolute;top:4px;bottom:4px;left:4px;width:calc((100% - 8px)/3);border-radius:999px;background:var(--navy-deep);box-shadow:0 6px 14px rgba(7,31,54,.25);transition:transform .45s var(--ease);will-change:transform}
-.cseg button{position:relative;z-index:1;background:none;border:0;color:var(--navy);font:inherit;font-size:13.5px;font-weight:700;letter-spacing:.04em;min-height:44px;border-radius:999px;cursor:pointer;transition:color .3s;-webkit-tap-highlight-color:transparent}
-.cseg button.on{color:#fff}
+.cseg{position:relative;isolation:isolate;display:grid;grid-template-columns:repeat(3,1fr);margin-top:8px;padding:4px;border-radius:999px;background:rgba(18,75,124,.07);border:1px solid var(--line)}
+.cseg .ind{position:absolute;top:4px;bottom:4px;left:4px;width:calc((100% - 8px)/3);border-radius:999px;background:var(--navy-deep);box-shadow:0 6px 14px rgba(7,31,54,.25);transition:transform .45s var(--ease);will-change:transform;z-index:0;pointer-events:none}
+.cseg button{position:relative;z-index:2;transform:translateZ(0);background:none;border:0;color:var(--navy);font:inherit;font-size:13.5px;font-weight:700;letter-spacing:.04em;min-height:44px;border-radius:999px;cursor:pointer;transition:color .3s;-webkit-tap-highlight-color:transparent}
+.cseg button.on{color:var(--gold)}
 .ccard{position:relative;margin-top:2px;background:var(--paper);border:1px solid var(--line);border-radius:16px;padding:14px 16px 12px;min-height:168px;box-shadow:0 12px 28px rgba(7,31,54,.08);overflow:hidden}
 .ccard::before{content:"";position:absolute;left:0;top:0;bottom:0;width:3px;background:linear-gradient(180deg,var(--gold),var(--gold-deep))}
 .cch{position:absolute;left:16px;right:16px;top:14px;opacity:0;transform:translateY(10px);transition:opacity .5s var(--ease),transform .5s var(--ease);pointer-events:none}
